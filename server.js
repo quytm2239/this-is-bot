@@ -16,11 +16,13 @@ app.use(function(req, res, next) {
        next();
 });
 
+const config = require('./config');
+
 const ORM = require('./model');
-app.set('port',require('./config').PORT)
+app.set('port',config.PORT);
 
 var viewRouter = express.Router()
-app.use('/',viewRouter)
+app.use(config.view_path,viewRouter)
 app.use(express.static(__dirname + '/view'));
 views = require('./view')(app, viewRouter)
 
