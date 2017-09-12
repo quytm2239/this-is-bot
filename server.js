@@ -15,6 +15,8 @@ app.use(function(req, res, next) {
    else
        next();
 });
+
+const ORM = require('./model');
 app.set('port',require('./config').PORT)
 
 var viewRouter = express.Router()

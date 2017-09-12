@@ -1,0 +1,6 @@
+2017-09-08T14:58:07.494Z - info: {"remote_addr": "::1", "date": "08/Sep/2017:14:58:07 +0000", "method": "GET", "url": "/favicon.ico", "http_version": "1.1", "status": "404", "result_length": "150", "user_agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/66.4.102 Chrome/60.4.3112.102 Safari/537.36", "response_time": "1.792"}
+
+2017-09-09T09:48:07.929Z - info: {"remote_addr": "::1", "date": "09/Sep/2017:09:48:07 +0000", "method": "GET", "url": "/favicon.ico", "http_version": "1.1", "status": "404", "result_length": "150", "user_agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/66.4.102 Chrome/60.4.3112.102 Safari/537.36", "response_time": "5.444"}
+
+2017-09-10T06:47:41.253Z - info: {"remote_addr": "::1", "date": "10/Sep/2017:06:47:41 +0000", "method": "GET", "url": "/favicon.ico", "http_version": "1.1", "status": "404", "result_length": "150", "user_agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/66.4.102 Chrome/60.4.3112.102 Safari/537.36", "response_time": "18.785"}
+

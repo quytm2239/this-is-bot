@@ -1,13 +1,5 @@
 module.exports={
-	PORT:9999,
-	db_config: {
-		connectionLimit: 10000, //important
-		host: 'localhost',
-		user: 'root',
-		password: '',
-		database: 'dating',
-		debug: false
-	},
+	PORT:777,
 	mongoose_connect: 'mongodb://localhost/VideoSpace',
 	api_path: '/api',
 	views_path: '/'

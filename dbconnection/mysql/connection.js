@@ -1,6 +1,6 @@
 var Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('moneyself', 'moneyself', '123456', {
+const sequelize = new Sequelize('this_is_bot', 'this_is_bot', '123456', {
   host: 'localhost',
   port: 3306,
   dialect: 'mysql',

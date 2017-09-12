@@ -8,14 +8,87 @@ body { padding:0px; margin:0px; }
     left:0;
 }
 
+/*<ul>*/
 .chat-container {
-    height: calc(100% - 40px);
-    background: #50c878;
-}
-ul.chat-container{
+    height: calc(100% - (40px + 40px));
+    background: #1f1f1f;
     margin: 0px;
     overflow:auto;
     padding-bottom: 20px;
+    list-style-type: none;
+    padding-top: 20px;
+    padding-left: 0px;
+}
+
+.message-item {
+    /*margin-left: 25%;*/
+    line-height: 100%;
+    display: flex;
+    /*padding-top: 10px;
+    padding-bottom: 10px;*/
+    /*padding-left: 40px;*/
+    width: 700px;
+    min-width: 700px;
+    margin-left: calc(50% - 350px);
+    margin-right: calc(50% - 350px);
+}
+/*li.sent-message {
+    background: white;
+}
+li.receive-message {
+    background: #4f4f4f;
+}*/
+li {
+    /*border-top: 1px solid #c9c9c9;*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+div.receive-message {
+    color: white;
+    background: #4f4f4f;
+    border: 1px solid white;
+}
+div.sent-message {
+    color: black;
+    background: white;
+    border: 1px solid #4f4f4f;
+}
+.message-owner-receive,.message-owner-sent {
+    /*color: #4f4f4f;*/
+    line-height: calc(100% + 20px);
+    text-align: center;
+    /*height: 100%;*/
+    width: 60px;
+    min-width: 60px;
+    font-size: 25px;
+    /*text-decoration: underline;*/
+    /*color: #000000;*/
+    border-radius: 10px 0px 0px 10px;
+}
+.message-owner-receive {
+    background: #4f4f4f;
+    border: 1px solid white;
+    color: #FFFFFF;
+}
+.message-owner-sent {
+    background: white;
+    color: #000000;
+    /*border-right: 1px solid #c9c9c9;*/
+    border: 1px solid #c9c9c9;
+}
+.message-content{
+    line-height: 100%;
+    /*margin-left: 10px;*/
+    /*border-left: 1px solid white;*/
+    width: calc(100% - 60px);
+    max-width: calc(100% - 60px);
+    text-align: left;
+
+    font-size: 30px;
+    /*border-radius: 10px 10px;*/
+    padding: 10px;
+    word-wrap: break-word;
 }
 
 .chat-input-container {
@@ -24,16 +97,20 @@ ul.chat-container{
     bottom: 0;
     margin: 0;
     width: 100%;
+    background: #1f1f1f;
 }
 
 .chat-input {
     height: calc(100% - 2px);
     border-width: thin;
     border-color: black;
-    width: 100%;
     margin: 0px;
     padding: 0px;
     line-height: calc(100% - 2px);
     font-size:24px;
     padding-left: 10px;
+    width: 800px;
+    min-width: 800px;
+    margin-left: calc(50% - 400px);
+    margin-right: calc(50% - 400px);
 }
