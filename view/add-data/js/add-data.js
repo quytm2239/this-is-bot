@@ -7,9 +7,9 @@ $(document).ready(function(){
     btnSubmit.on('click',function () {
         console.log(inputQ.val() + inputG.val() + inputA.val());
         $.post("/api/add-usual", {
-            q: inputQ.val(),
-            g: inputG.val(),
-            a: inputA.val()
+            question: inputQ.val(),
+            group: inputG.val(),
+            answer: inputA.val()
         }, function(result){
             console.log(result);
         });

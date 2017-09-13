@@ -1,3 +1,3 @@
-module.exports = function(app,router) {
-    require('./usual')(app,router);
+module.exports = function(app,ORM,router) {
+    require('./usual')(app,ORM,router)
 };

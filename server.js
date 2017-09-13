@@ -8,6 +8,10 @@ var io = require('socket.io').listen(server)
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+
+// app.use(morgan('dev'))
+require('./filelogger')(app,morgan)
+
 // redirect to [right] route
 app.use(function(req, res, next) {
    if(req.url.substr(-1) == '/' && req.url.length > 1)
@@ -17,17 +21,18 @@ app.use(function(req, res, next) {
 });
 
 const config = require('./config');
-
 const ORM = require('./model');
 app.set('port',config.PORT);
+app.set('utils',require('./utils'))
+
+var apiRouter = express.Router()
+app.use(config.api_path,apiRouter)
+router = require('./route')(app,ORM,apiRouter)
 
 var viewRouter = express.Router()
 app.use(config.view_path,viewRouter)
 app.use(express.static(__dirname + '/view'));
 views = require('./view')(app, viewRouter)
-
-// app.use(morgan('dev'))
-filelogger = require('./filelogger')(app,morgan)
 
 socketchat = require('./socketchat')(io);
 
