@@ -1,3 +1,4 @@
-module.exports = function(app,ORM,router) {
-    require('./usual')(app,ORM,router)
+module.exports = function(app,router) {
+    const controller = require('./../controller');
+    require('./usual')(app,controller,router);
 };

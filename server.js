@@ -21,13 +21,12 @@ app.use(function(req, res, next) {
 });
 
 const config = require('./config');
-const ORM = require('./model');
 app.set('port',config.PORT);
 app.set('utils',require('./utils'))
 
 var apiRouter = express.Router()
 app.use(config.api_path,apiRouter)
-router = require('./route')(app,ORM,apiRouter)
+router = require('./route')(app,apiRouter)
 
 var viewRouter = express.Router()
 app.use(config.view_path,viewRouter)

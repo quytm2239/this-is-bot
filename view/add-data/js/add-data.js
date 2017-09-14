@@ -5,7 +5,6 @@ $(document).ready(function(){
     var inputA = $('.input-answer');
 
     btnSubmit.on('click',function () {
-        console.log(inputQ.val() + inputG.val() + inputA.val());
         $.post("/api/add-usual", {
             question: inputQ.val(),
             group: inputG.val(),
