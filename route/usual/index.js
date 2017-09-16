@@ -20,6 +20,22 @@ module.exports = function(app,controller,router) {
         processInsert();
     });
 
+    router.get('/usual',function(req,res) {
+        var processLoad = async (function() {
+            console.log('1');
+            var successQ = await (controller.Usual.loadAllQ);
+            console.log(successQ);
+            var successA = await (controller.Usual.loadAllA);
+            console.log(successA);
+            var successE = await (controller.Exactly.loadAll);
+            console.log(successE);
+            var success = successQ && successA && successE;
+            console.log(success);
+            return sendResponse(res,success,success ? [successQ.dataValues,successA.dataValues] : []);
+        });
+        processLoad();
+    });
+
     function sendResponse(res,success,data) {
         if (success) {
             res.status(200).send(data);

@@ -1,4 +1,5 @@
 var rootDir = __dirname;
+
 var express = require('express')
 var app = express()
 var server = require('http').createServer(app)
@@ -22,7 +23,9 @@ app.use(function(req, res, next) {
 
 const config = require('./config');
 app.set('port',config.PORT);
-app.set('utils',require('./utils'))
+app.set('utils',require('./utils'));
+
+require('./loadAIData')(io);
 
 var apiRouter = express.Router()
 app.use(config.api_path,apiRouter)
@@ -32,8 +35,6 @@ var viewRouter = express.Router()
 app.use(config.view_path,viewRouter)
 app.use(express.static(__dirname + '/view'));
 views = require('./view')(app, viewRouter)
-
-socketchat = require('./socketchat')(io);
 
 server.listen(process.env.PORT || app.get('port'), function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env)

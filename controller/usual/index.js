@@ -1,6 +1,6 @@
 const ORM = require('./../../model')
 const async = require('asyncawait/async');
-const await = require('asyncawait/await');
+
 module.exports = {
     addQ: function (question,group) {
         return ORM.Usual.Q.create({
@@ -22,6 +22,16 @@ module.exports = {
             return saved;
         }).catch(function (err) {
             return null;
+        });
+    },
+    loadAllQ: function () {
+        return ORM.Usual.Q.findAll().then(value => {
+            return value;
+        });
+    },
+    loadAllA: function () {
+        return ORM.Usual.A.findAll().then(value => {
+            return value;
         });
     }
 };

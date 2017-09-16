@@ -1,3 +1,4 @@
 module.exports = {
-    Usual: require('./usual')
+    Usual: require('./usual'),
+    Exactly: require('./exactly')
 }
