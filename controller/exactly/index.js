@@ -2,9 +2,10 @@ const ORM = require('./../../model');
 const async = require('asyncawait/async');
 
 module.exports = {
-    add: function (question,answer) {
+    add: function (keyword,sub_keyword,answer) {
         return ORM.Exactly.create({
-            question: question,
+            keyword: keyword,
+            sub_keyword: sub_keyword,
             answer: answer
         }).then(saved => {
             // you can now access the newly created task via the variable task
@@ -15,7 +16,11 @@ module.exports = {
     },
     loadAll: function () {
         return ORM.Exactly.findAll().then(value => {
-            return value;
+            var valueJson = [];
+            for (var variable of value) {
+                valueJson.push(variable.dataValues);
+            }
+            return valueJson;
         });
     }
 };

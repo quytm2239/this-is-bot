@@ -25,7 +25,7 @@ const config = require('./config');
 app.set('port',config.PORT);
 app.set('utils',require('./utils'));
 
-require('./loadAIData')(io);
+require('./AI-chat')(io);
 
 var apiRouter = express.Router()
 app.use(config.api_path,apiRouter)

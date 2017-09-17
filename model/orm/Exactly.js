@@ -4,7 +4,8 @@ var Sequelize = require('sequelize');
 
 var Exactly = sequelize.define('Exactly', {
     id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-    question: Sequelize.STRING,
+    keyword: Sequelize.STRING,
+    sub_keyword: Sequelize.STRING,
     answer: Sequelize.STRING
 });
 
