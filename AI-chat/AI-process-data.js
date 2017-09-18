@@ -13,5 +13,10 @@ module.exports = {
             sub_keyword: resultSubKey,
             answer: resultAnswer
         };
+    },
+    getRandomInArray: function (input) {
+        if (input && input.length > 0) {
+            return input[Math.floor(Math.random() * arrayAnswer.length)];
+        }
     }
 };
