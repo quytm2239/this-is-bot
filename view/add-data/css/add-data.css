@@ -2,15 +2,15 @@ body {
     margin: 0px;
 }
 div.container {
-    background: black;
+    background: #7c7c7c;
     position:fixed;
     left:50%;
     top:50%;
-    width:500px;
-    height:180px;
+    width:800px;
+    height:300px;
 
-    margin-left:-250px;
-    margin-top:-90px;
+    margin-left:-400px;
+    margin-top:-150px;
 }
 table.container{
     width: 100%;
@@ -20,16 +20,30 @@ td.left,td.right {
     padding: 0px;
 }
 td.left{
-    width: 40%;
+    width: 30%;
 }
 td.right {
-    width: 60%;
+    width: 70%;
 }
 div.label {
     color: white;
     font-size: 25px;
     text-align: right;
     padding-right: 10px;
+}
+input[type="radio"].radio-type {
+    margin-right: 10px;
+    margin-left: 40px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    transform: scale(1.5);
+    top: 0px;
+}
+div.radio-type {
+    display: inline;
+    color: white;
+    font-size: 25px;
+    line-height: 100%;
 }
 
 div.horizontal-inset {
@@ -38,15 +52,27 @@ div.horizontal-inset {
     width: 100%;
 }
 
-.input-question
-,.input-group
-,.input-answer {
+.input-key
+,.input-seckey
+{
     width: calc(100% - 30px);
     border: 0px;
     padding: 0px;
     height: 30px;
     font-size: 20px;
     line-height: 30px;
+    padding-left: 10px;
+    margin-right: 20px;
+}
+
+.textarea-answer {
+    border: 0px;
+    padding: 0px;
+    height: 100px;
+    max-height: 100px;
+    width: calc(100% - 30px);
+    max-width: calc(100% - 30px);
+    font-size: 20px;
     padding-left: 10px;
     margin-right: 20px;
 }

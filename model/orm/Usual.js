@@ -5,7 +5,7 @@ var Sequelize = require('sequelize');
 var Usual = sequelize.define('Usual', {
     id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
     keyword: Sequelize.STRING,
-    sub_keyword: Sequelize.STRING,
+    sec_keyword: {type: Sequelize.STRING, defaultValue: '#'},
     answer: Sequelize.STRING
 });
 

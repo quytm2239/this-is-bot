@@ -1,20 +1,30 @@
 socket = io();
 $(document).ready(function(){
+    var timer;
+    var delay = 600;
+
     var chatArea = $('.chat-container');
     var chatInput = $('.chat-input');
     chatInput.keyup(function(e){
         if(e.keyCode == 13)
         {
+            var message_content = $(this).val();
+            if (message_content == null || message_content.length == 0) {
+                return;
+            }
             $(this).trigger("enterKey");
         }
     });
 
     chatInput.bind("enterKey",function() {
         //console.log($(this).val());
+        window.clearTimeout(timer);
         var message_content = $(this).val();
-        chatArea.append(makeSendText('You',message_content));
-        socket.emit('new_message',message_content);
-        $(this).val('');
+        chatInput.val('');
+        timer = window.setTimeout(function(){
+            chatArea.append(makeSendText('You',message_content));
+            socket.emit('new_message',message_content);
+        }, delay);
     });
 
     socket.on('new_message',function (data) {

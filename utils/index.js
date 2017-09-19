@@ -56,7 +56,7 @@ module.exports =
     },
     chkObj: function (obj)
     {
-        if ((obj === undefined || obj === null || obj.length == 0) == false) {
+        if ((obj == undefined || obj == null || obj.length == 0) == false) {
     		return true;
     	}
     	return false;

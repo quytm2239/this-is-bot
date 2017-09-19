@@ -8,27 +8,33 @@
     </head>
     <body>
         <div class="container">
+
+            <div class="horizontal-inset"></div>
             <table class="container">
                 <tr>
-                    <td class="left">
-                        <div class="label">Question:</div>
-                        <div class="label">Group:</div>
-                        <div class="label">Answer:</div>
-                    </td>
+                    <td class="left"></td>
                     <td class="right">
-                        <div><input type="text" class="input-question"></div>
-                        <div class="horizontal-inset"></div>
-                        <div><input type="text" class="input-group"></div>
-                        <div class="horizontal-inset"></div>
-                        <div><input type="text" class="input-answer"></div>
+                        <input id="radio-type" class="radio-type" type="radio" name="type" value="Usual"><div class="radio-type">Usual</div>
+                        <input id="radio-type" class="radio-type" type="radio" name="type" value="Exactly"><div class="radio-type">Exactly</div>
                     </td>
                 </tr>
                 <tr>
-                    <td class="button-container" colspan="2">
-                        <div class="button-sumit">SUBMIT</div>
-                    </td>
+                    <td class="left"><div class="label">Key:</div></td>
+                    <td class="right"><div><input type="text" class="input-key"></div></td>
+                </tr>
+                <tr>
+                    <td class="left"><div class="label">Seckey:</div></td>
+                    <td class="right"><div><input type="text" class="input-seckey"></div></td>
+                </tr>
+                <tr>
+                    <td class="left"><div class="label">Answer:</div></td>
+                    <td class="right"><textarea class="textarea-answer"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="button-container" colspan="2"><div class="button-sumit">SUBMIT</div></td>
                 </tr>
             </table>
+            <div class="horizontal-inset"></div>
         </div>
         <script type="text/javascript" src="add-data/js/add-data.js"></script>
     </body>
