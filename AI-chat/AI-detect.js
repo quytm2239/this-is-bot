@@ -30,8 +30,8 @@ module.exports = {
         if (seckeyFound.length == 0) { // not found
             return 'NOT FOUND';
         } else {
-            for (let i = 0; i < seckeyFound.length; i++) {
-                let seckeyObj = seckeyFound[i];
+            if (seckeyFound.length == 1) {
+                let seckeyObj = seckeyFound[0];
 
                 if (seckeyObj.sec_key == '#') {
                     console.log('FOUND SECKEY IS #');
@@ -47,7 +47,6 @@ module.exports = {
                     return finalAnswer;
                 } else if (input.indexOf(seckeyObj.sec_key) >= 0) {
                     // found input contain seckey
-                    let order = orders[seckeyObj.real_index];
                     let KeyPosition = input.indexOf(seckeyObj.key);
                     let SecKeyPosition = input.indexOf(seckeyObj.sec_key);
                     // Check order of Key n SubKey
@@ -73,8 +72,54 @@ module.exports = {
                         return 'NOT FOUND';
                     }
                 }
+            } else {
+                var seckeyObj#;
+                for (let i = 0; i < seckeyFound.length; i++) {
+                    let seckeyObj = seckeyFound[i];
+
+                    if (input.indexOf(seckeyObj.sec_key) >= 0) {
+                       // found input contain seckey
+                       let KeyPosition = input.indexOf(seckeyObj.key);
+                       let SecKeyPosition = input.indexOf(seckeyObj.sec_key);
+                       // Check order of Key n SubKey
+                       if ((KeyPosition + seckeyObj.key.length) < SecKeyPosition) {
+                           // < means between 2 keys, there is a ' '
+                           let space = input.charAt(KeyPosition + seckeyObj.key.length + 1);
+                           let arrayAnswer = JSON.parse(answer[seckeyObj.real_index]); // get array answer from real_index (original index)
+                           let finalAnswer = require('./AI-process-data').getRandomInArray(arrayAnswer);
+                           // console.log(finalAnswer);
+                           return finalAnswer;
+
+                           // if (space === ' ') {
+                           //     let arrayAnswer = JSON.parse(answer[seckeyObj.real_index]); // get array answer from real_index (original index)
+                           //     let finalAnswer = require('./AI-process-data').getRandomInArray(arrayAnswer);
+                           //     // console.log(finalAnswer);
+                           //     return finalAnswer;
+                           // } else {
+                           //     // fail because FOUND KEY n SECKEY, correct order but there is no ' ' between them
+                           //     return 'NOT FOUND';
+                           // }
+                       } else {
+                           // fail because FOUND KEY n SECKEY but wrong order
+                           return 'NOT FOUND';
+                       }
+                    }
+                }
+                if (seckeyObj.sec_key == '#') {
+                   console.log('FOUND SECKEY IS #');
+                   // # means no sec_key, just ony check keyword
+                   let arrayAnswer = JSON.parse(answer[seckeyObj.real_index]); // get array answer from real_index (original index)
+                   let finalAnswer = require('./AI-process-data').getRandomInArray(arrayAnswer);
+                   // console.log(seckeyObj.key);
+                   // if (input.length == seckeyObj.key.length) {
+                   //     // Input is same with key
+                   //     // console.log(finalAnswer);
+                   //     return finalAnswer;
+                   // }
+                   return finalAnswer;
+               }
+                return 'NOT FOUND';
             }
-            return 'NOT FOUND';
         }
     }
 };
