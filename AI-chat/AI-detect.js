@@ -30,20 +30,13 @@ module.exports = {
         if (seckeyFound.length == 0) { // not found
             return 'NOT FOUND';
         } else {
+            //*****************************FOUND ONCE***********************************
             if (seckeyFound.length == 1) {
                 let seckeyObj = seckeyFound[0];
-
                 if (seckeyObj.sec_key == '#') {
-                    console.log('FOUND SECKEY IS #');
                     // # means no sec_key, just ony check keyword
                     let arrayAnswer = JSON.parse(answer[seckeyObj.real_index]); // get array answer from real_index (original index)
                     let finalAnswer = require('./AI-process-data').getRandomInArray(arrayAnswer);
-                    // console.log(seckeyObj.key);
-                    // if (input.length == seckeyObj.key.length) {
-                    //     // Input is same with key
-                    //     // console.log(finalAnswer);
-                    //     return finalAnswer;
-                    // }
                     return finalAnswer;
                 } else if (input.indexOf(seckeyObj.sec_key) >= 0) {
                     // found input contain seckey
@@ -51,13 +44,10 @@ module.exports = {
                     let SecKeyPosition = input.indexOf(seckeyObj.sec_key);
                     // Check order of Key n SubKey
                     if ((KeyPosition + seckeyObj.key.length) < SecKeyPosition) {
-                        // < means between 2 keys, there is a ' '
                         let space = input.charAt(KeyPosition + seckeyObj.key.length + 1);
                         let arrayAnswer = JSON.parse(answer[seckeyObj.real_index]); // get array answer from real_index (original index)
                         let finalAnswer = require('./AI-process-data').getRandomInArray(arrayAnswer);
-                        // console.log(finalAnswer);
                         return finalAnswer;
-
                         // if (space === ' ') {
                         //     let arrayAnswer = JSON.parse(answer[seckeyObj.real_index]); // get array answer from real_index (original index)
                         //     let finalAnswer = require('./AI-process-data').getRandomInArray(arrayAnswer);
@@ -73,52 +63,54 @@ module.exports = {
                     }
                 }
             } else {
-                var seckeyObj#;
+                //***********************FOUND MORE THAN ONCE***************************
+                // 1. Start loop through seckeyFound list to check if input contain which seckey
+                let NO_CHECK_SECKEY = null;
                 for (let i = 0; i < seckeyFound.length; i++) {
                     let seckeyObj = seckeyFound[i];
 
+                    if (seckeyObj.sec_key == '#') {
+                        NO_CHECK_SECKEY = seckeyObj;
+                    } else {
                     if (input.indexOf(seckeyObj.sec_key) >= 0) {
-                       // found input contain seckey
-                       let KeyPosition = input.indexOf(seckeyObj.key);
-                       let SecKeyPosition = input.indexOf(seckeyObj.sec_key);
-                       // Check order of Key n SubKey
-                       if ((KeyPosition + seckeyObj.key.length) < SecKeyPosition) {
-                           // < means between 2 keys, there is a ' '
-                           let space = input.charAt(KeyPosition + seckeyObj.key.length + 1);
-                           let arrayAnswer = JSON.parse(answer[seckeyObj.real_index]); // get array answer from real_index (original index)
-                           let finalAnswer = require('./AI-process-data').getRandomInArray(arrayAnswer);
-                           // console.log(finalAnswer);
-                           return finalAnswer;
+                        // found input contain seckey
+                        let KeyPosition = input.indexOf(seckeyObj.key);
+                        let SecKeyPosition = input.indexOf(seckeyObj.sec_key);
+                        // Check order of Key n SubKey
+                        if ((KeyPosition + seckeyObj.key.length) < SecKeyPosition) {
+                            // < means between 2 keys, there is a ' '
+                            let space = input.charAt(KeyPosition + seckeyObj.key.length + 1);
+                            let arrayAnswer = JSON.parse(answer[seckeyObj.real_index]); // get array answer from real_index (original index)
+                            let finalAnswer = require('./AI-process-data').getRandomInArray(arrayAnswer);
+                            // console.log(finalAnswer);
+                            return finalAnswer;
 
-                           // if (space === ' ') {
-                           //     let arrayAnswer = JSON.parse(answer[seckeyObj.real_index]); // get array answer from real_index (original index)
-                           //     let finalAnswer = require('./AI-process-data').getRandomInArray(arrayAnswer);
-                           //     // console.log(finalAnswer);
-                           //     return finalAnswer;
-                           // } else {
-                           //     // fail because FOUND KEY n SECKEY, correct order but there is no ' ' between them
-                           //     return 'NOT FOUND';
-                           // }
-                       } else {
-                           // fail because FOUND KEY n SECKEY but wrong order
-                           return 'NOT FOUND';
-                       }
+                            // if (space === ' ') {
+                            //     let arrayAnswer = JSON.parse(answer[seckeyObj.real_index]); // get array answer from real_index (original index)
+                            //     let finalAnswer = require('./AI-process-data').getRandomInArray(arrayAnswer);
+                            //     // console.log(finalAnswer);
+                            //     return finalAnswer;
+                            // } else {
+                            //     // fail because FOUND KEY n SECKEY, correct order but there is no ' ' between them
+                            //     return 'NOT FOUND';
+                            // }
+                        } else {
+                            // fail because FOUND KEY n SECKEY but wrong order
+                            return 'NOT FOUND';
+                        }
                     }
                 }
-                if (seckeyObj.sec_key == '#') {
-                   console.log('FOUND SECKEY IS #');
-                   // # means no sec_key, just ony check keyword
-                   let arrayAnswer = JSON.parse(answer[seckeyObj.real_index]); // get array answer from real_index (original index)
-                   let finalAnswer = require('./AI-process-data').getRandomInArray(arrayAnswer);
-                   // console.log(seckeyObj.key);
-                   // if (input.length == seckeyObj.key.length) {
-                   //     // Input is same with key
-                   //     // console.log(finalAnswer);
-                   //     return finalAnswer;
-                   // }
-                   return finalAnswer;
-               }
-                return 'NOT FOUND';
+                // 2. Input does not contain any seckey
+                let arrayAnswer = JSON.parse(answer[NO_CHECK_SECKEY.real_index]); // get array answer from real_index (original index)
+                let finalAnswer = require('./AI-process-data').getRandomInArray(arrayAnswer);
+                // console.log(seckeyObj.key);
+                // if (input.length == seckeyObj.key.length) {
+                //     // Input is same with key
+                //     // console.log(finalAnswer);
+                //     return finalAnswer;
+                // }
+                return finalAnswer;
+                // return 'NOT FOUND';
             }
         }
     }
